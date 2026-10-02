@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- macOS LaunchAgent installer (`scripts/macos/install-launchagent.sh`, plus `uninstall-launchagent.sh`): runs the HTTP server at login in the background and restarts it if it exits.
+
 ## 0.2.0 — 2026-09-13
 
 Re-aligned with Paperclip `main` @ 2026-09-13 (package 0.3.1, release 2026.831). Audited every tool against the upstream route and zod schema sources.

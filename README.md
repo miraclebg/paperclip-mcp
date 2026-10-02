@@ -115,7 +115,18 @@ claude mcp add paperclip --transport http http://localhost:9011/mcp
 }
 ```
 
-### Auto-start with your MCP stack
+### Run in the background on macOS (LaunchAgent)
+
+Start the HTTP server at login and have launchd restart it if it exits:
+
+```bash
+scripts/macos/install-launchagent.sh      # installs ~/Library/LaunchAgents/com.paperclip-mcp.server.plist
+scripts/macos/uninstall-launchagent.sh    # stops and removes it
+```
+
+The agent runs from the repository directory, so it reads the repo's `.env`. Override the bind address with `PAPERCLIP_MCP_HOST` / `PAPERCLIP_MCP_PORT` when installing. Logs go to `~/Library/Logs/paperclip-mcp/`. Re-run the install script after editing `.env` to restart the server with the new values.
+
+### Auto-start with your MCP stack (other platforms)
 
 ```bash
 curl -s --max-time 1 http://localhost:9011/mcp > /dev/null 2>&1 || \
